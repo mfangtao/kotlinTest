@@ -1,6 +1,7 @@
 package com.fangtao.kotlintest
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -22,12 +23,20 @@ class Main2Activity : AppCompatActivity() {
             //AlertDialog弹出窗口
             var dialog = AlertDialog.Builder(Main2Activity@this)
             dialog.setTitle("标题")
-                    .setMessage("这是内容")
+                    .setMessage("退出?")
                     .setNegativeButton("确定",DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
                         Toast.makeText(this,"你点击了确定按钮",Toast.LENGTH_LONG).show()
+                        Main2Activity@this.finish()
                     }).setPositiveButton("取消",DialogInterface.OnClickListener { dialogInterface:DialogInterface, which ->
                         Toast.makeText(this,"你点击了取消按钮",Toast.LENGTH_LONG).show()
                     }).show()
+        }
+
+        /**
+         * listviewBtn按钮点击事件
+         */
+        listviewBtn.setOnClickListener {
+            startActivity(Intent(Main2Activity@this,MyListView::class.java))
         }
     }
 }
